@@ -10,7 +10,7 @@ const Card: FC<CardProps> = ({ page }) => {
         {/* image */}
         <div>
           <Image
-            className="w-full static w-full h-auto"
+            className="w-full static h-auto"
             src={page.cover}
             alt=""
             objectFit="cover"
