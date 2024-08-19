@@ -2,9 +2,9 @@ import ArticleMeta from '@/components/ArticleMeta';
 import Layout from '@/components/Layout';
 import type { ArticleProps, Params } from '@/types/types';
 import { sampleCards } from '@/utils/sample';
-import type { GetServerSideProps, NextPage } from 'next';
+import type { GetStaticProps, NextPage } from 'next';
 
-export const getServerSideProps: GetServerSideProps = async (ctx) => {
+export const getStaticProps: GetStaticProps = async (ctx) => {
   const { slug } = ctx.params as Params;
 
   const page = sampleCards.find((data) => data.slug === slug);

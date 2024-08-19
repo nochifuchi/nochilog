@@ -6,7 +6,7 @@ import { fetchPages } from '@/utils/notion';
 import type { GetStaticProps, NextPage } from 'next';
 
 export const getStaticProps: GetStaticProps = async () => {
-  const { results } = await fetchPages();
+  const { results } = await fetchPages({});
 
   return {
     props: {
