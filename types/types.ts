@@ -48,7 +48,7 @@ export type RichTextType = {
 export type PropertyType = {
   name: { title: RichTextType[] };
   slug: { rich_text: RichTextType[] };
-  Published: {
+  published: {
     date: {
       start: string;
     };
