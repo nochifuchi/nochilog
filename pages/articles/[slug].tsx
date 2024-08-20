@@ -2,7 +2,23 @@ import ArticleMeta from '@/components/ArticleMeta';
 import Layout from '@/components/Layout';
 import type { ArticleProps, Params } from '@/types/types';
 import { fetchBlocksByPageId, fetchPages } from '@/utils/notion';
-import type { GetStaticProps, NextPage } from 'next';
+import { getText } from '@/utils/property';
+import type { GetStaticPaths, GetStaticProps, NextPage } from 'next';
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const { results } = await fetchPages({});
+  const paths = results.map((page: any) => {
+    return {
+      params: {
+        slug: getText(page.properties.slug.rich_text),
+      },
+    };
+  });
+  return {
+    paths,
+    fallback: 'blocking',
+  };
+};
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
   const { slug } = ctx.params as Params;
