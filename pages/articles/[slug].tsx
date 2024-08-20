@@ -1,18 +1,25 @@
 import ArticleMeta from '@/components/ArticleMeta';
 import Layout from '@/components/Layout';
 import type { ArticleProps, Params } from '@/types/types';
-import { sampleCards } from '@/utils/sample';
+import { fetchBlocksByPageId, fetchPages } from '@/utils/notion';
 import type { GetStaticProps, NextPage } from 'next';
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
   const { slug } = ctx.params as Params;
 
-  const page = sampleCards.find((data) => data.slug === slug);
+  const { results } = await fetchPages({ slug });
+  // ページ情報（配列で返ってくるので最初の配列を取得）
+  const page = results[0];
+  const pageId = page.id;
+  // ページの中身（blocks）
+  const { results: blocks } = await fetchBlocksByPageId(pageId);
 
   return {
     props: {
       page,
+      blocks,
     },
+    revalidate: 10,
   };
 };
 
