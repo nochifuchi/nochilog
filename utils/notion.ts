@@ -5,7 +5,7 @@ const databaseId = process.env.NOTION_DATABASE_ID as string;
 
 const notion = new Client({ auth: apiKey });
 
-export const fetchPages = async ({ slug }: { slug?: string }) => {
+export const fetchPages = async ({ slug, tag }: { slug?: string; tag?: string }) => {
   const filterOption: any = [
     {
       property: 'isPublic',
@@ -26,6 +26,15 @@ export const fetchPages = async ({ slug }: { slug?: string }) => {
       property: 'slug',
       rich_text: {
         equals: slug,
+      },
+    });
+  }
+
+  if (tag) {
+    filterOption.push({
+      property: 'tags',
+      multi_select: {
+        contains: tag,
       },
     });
   }
