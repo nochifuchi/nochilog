@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+/* custom class */
+.overflow-anywhere {
+    overflow-wrap: anywhere;
+}
+
 .nbr-blocks h1 {
     @apply font-semibold leading-tight text-4xl mt-0 mb-2;
 }
