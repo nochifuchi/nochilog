@@ -5,41 +5,32 @@ import type { FC } from 'react';
 
 const Card: FC<CardProps> = ({ page }) => {
   return (
-    <Link href={`/articles/${getText(page.properties.slug.rich_text)}`}>
-      <div className="max-w-sm rounded p-4 shadow-lg bg-primary-light-gray">
-        {/* image */}
-        {/* <div>
-          <Image
-            className="w-full static h-auto"
-            src={getCover(page.cover)}
-            alt=""
-            objectFit="cover"
-            width={400}
-            height={225}
-            quality={30}
-          />
-        </div> */}
-
-        {/* title & date*/}
-        <div className="flex items-start gap-x-3">
-          <div className="p-3 bg-white rounded-lg text-4xl leading-none">{page.icon.emoji}</div>
-          <div>
-            <h2 className="text-base font-medium mb-3 ">{getText(page.properties.name.title)}</h2>
-            <p className="text-gray-700 text-xs">{getDate(page.properties.published.date)}</p>
-          </div>
-        </div>
-
-        {/* tag */}
-        <div>
+    <Link
+      href={`/articles/${getText(page.properties.slug.rich_text)}`}
+      className="grid gap-y-4 p-5 transition bg-base-light-gray hover:bg-base-gray shadow-lg rounded-lg"
+    >
+      <div className="inline-flex items-center justify-center h-14 text-5xl leading-none">
+        {page.icon.emoji}
+      </div>
+      <div className="w-full">
+        <h2 className="text-base overflow-anywhere font-bold leading-6 line-clamp-2">
+          {getText(page.properties.name.title)}
+        </h2>
+      </div>
+      <div className="self-end">
+        <ul className="inline-flex gap-x-2">
           {getMultiSelect(page.properties.tags.multi_select).map((tag, index) => (
-            <span
+            <li
               key={index}
-              className="text-sm px-2 py-1 font-normal bg-white rounded-lg break-words mr-2 mb-2"
+              className="text-sm px-2 py-1 font-normal bg-white rounded-lg break-words"
             >
-              {`#${tag}`}
-            </span>
+              {tag}
+            </li>
           ))}
-        </div>
+        </ul>
+        <p className="text-right mt-3 text-gray-700 text-xs">
+          {getDate(page.properties.published.date)}
+        </p>
       </div>
     </Link>
   );
