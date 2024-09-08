@@ -9,7 +9,7 @@ const ArticleMeta: FC<ArticleMetaProps> = ({ page }) => {
       <div className="flex items-center justify-center h-12 text-5xl leading-none">
         {page.icon.emoji}
       </div>
-      <h1 className="mt-3 text-xl sm:text-3xl font-bold text-center overflow-anywhere">
+      <h1 className="mt-3 text-2xl sm:text-3xl font-bold text-center overflow-anywhere">
         {getText(page.properties.name.title)}
       </h1>
       <p className="mt-2 text-center text-xs sm:text-sm text-gray-600">
