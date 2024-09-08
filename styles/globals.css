@@ -8,10 +8,10 @@
 }
 
 .nbr-blocks h1 {
-    @apply font-semibold leading-tight text-4xl mt-0 mb-2;
+    @apply font-semibold leading-tight text-4xl mt-0 mb-2 pb-2 border-b-2 border-gray-300;
 }
 .nbr-blocks h2 {
-    @apply font-semibold leading-tight text-3xl mt-0 mb-2;
+    @apply font-semibold leading-tight text-3xl mt-0 mb-2 pb-2 border-b-2 border-gray-300;
 }
 .nbr-blocks h3 {
     @apply font-semibold leading-tight text-2xl mt-0 mb-2;
