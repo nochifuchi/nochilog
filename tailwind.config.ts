@@ -42,6 +42,10 @@ const config: Config = {
           '900': '#574546',
           '950': '#2d2223',
         },
+        base: {
+          gray: '#d9d9d9',
+          'light-gray': '#ececec',
+        },
       },
     },
   },
