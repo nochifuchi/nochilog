@@ -43,14 +43,12 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
 const Article: NextPage<ArticleProps> = ({ page, blocks }) => {
   return (
     <Layout>
-      <article className="w-full">
+      <article className="max-w-screen-md mx-auto px-4 lg:px-0">
         {/* meta section */}
-        <div className="my-12">
-          <ArticleMeta page={page} />
-        </div>
+        <ArticleMeta page={page} />
 
         {/* article */}
-        <div className="my-12">
+        <div className="py-8">
           <NotionBlocks blocks={blocks} isCodeHighlighter={true} />
         </div>
       </article>
