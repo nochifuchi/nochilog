@@ -22,7 +22,7 @@ const Card: FC<CardProps> = ({ page }) => {
           {getMultiSelect(page.properties.tags.multi_select).map((tag, index) => (
             <li
               key={index}
-              className="text-sm px-2 py-1 font-normal bg-white rounded-lg break-words"
+              className="text-sm text-white px-2 py-1 font-normal bg-primary-500 rounded-lg break-words"
             >
               {tag}
             </li>
