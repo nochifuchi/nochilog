@@ -7,13 +7,13 @@ const Card: FC<CardProps> = ({ page }) => {
   return (
     <Link
       href={`/articles/${getText(page.properties.slug.rich_text)}`}
-      className="grid gap-y-4 p-5 transition bg-base-light-gray hover:bg-base-gray shadow-lg rounded-lg"
+      className="grid gap-y-4 rounded-lg bg-base-light-gray p-5 shadow-lg transition hover:bg-base-gray"
     >
-      <div className="inline-flex items-center justify-center h-14 text-5xl leading-none">
+      <div className="inline-flex h-14 items-center justify-center text-5xl leading-none">
         {page.icon.emoji}
       </div>
       <div className="w-full">
-        <h2 className="text-base overflow-anywhere font-bold leading-6 line-clamp-2">
+        <h2 className="overflow-anywhere line-clamp-2 text-base font-bold leading-6">
           {getText(page.properties.name.title)}
         </h2>
       </div>
@@ -22,13 +22,13 @@ const Card: FC<CardProps> = ({ page }) => {
           {getMultiSelect(page.properties.tags.multi_select).map((tag, index) => (
             <li
               key={index}
-              className="text-sm text-white px-2 py-1 font-normal bg-primary-500 rounded-lg break-words"
+              className="break-words rounded-lg bg-primary-500 px-2 py-1 text-sm font-normal text-white"
             >
               {tag}
             </li>
           ))}
         </ul>
-        <p className="text-right mt-3 text-gray-700 text-xs">
+        <p className="mt-3 text-right text-xs text-gray-700">
           {getDate(page.properties.published.date)}
         </p>
       </div>

@@ -43,7 +43,7 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
 const Article: NextPage<ArticleProps> = ({ page, blocks }) => {
   return (
     <Layout>
-      <article className="max-w-screen-md mx-auto px-4 lg:px-0">
+      <article className="mx-auto max-w-screen-md px-4 lg:px-0">
         {/* meta section */}
         <ArticleMeta page={page} />
 

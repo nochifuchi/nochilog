@@ -11,7 +11,7 @@ const Header = () => {
   );
 
   return (
-    <header className="flex items-center max-w-screen-md h-20 mx-auto px-4">
+    <header className="mx-auto flex h-20 max-w-screen-md items-center px-4">
       {router.pathname === '/' ? <h1>{titleLink}</h1> : <>{titleLink}</>}
     </header>
   );

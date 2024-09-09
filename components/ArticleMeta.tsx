@@ -5,14 +5,14 @@ import type { FC } from 'react';
 
 const ArticleMeta: FC<ArticleMetaProps> = ({ page }) => {
   return (
-    <div className="px-4 py-6 bg-primary-100 rounded-md">
-      <div className="flex items-center justify-center h-12 text-5xl leading-none">
+    <div className="rounded-md bg-primary-100 px-4 py-6">
+      <div className="flex h-12 items-center justify-center text-5xl leading-none">
         {page.icon.emoji}
       </div>
-      <h1 className="mt-3 text-2xl sm:text-3xl font-bold text-center overflow-anywhere">
+      <h1 className="overflow-anywhere mt-3 text-center text-2xl font-bold sm:text-3xl">
         {getText(page.properties.name.title)}
       </h1>
-      <p className="mt-2 text-center text-xs sm:text-sm text-gray-600">
+      <p className="mt-2 text-center text-xs text-gray-600 sm:text-sm">
         {getDate(page.properties.published.date)}に公開
       </p>
       <div className="mt-4 flex justify-center">
@@ -21,7 +21,7 @@ const ArticleMeta: FC<ArticleMetaProps> = ({ page }) => {
             <li key={index}>
               <Link
                 href={`/tags/${tag}`}
-                className="py-2 px-4 text-sm sm:text-base rounded-full bg-primary-500 hover:bg-primary-400 text-white transion"
+                className="transion rounded-full bg-primary-500 px-4 py-2 text-sm text-white hover:bg-primary-400 sm:text-base"
               >
                 {tag}
               </Link>
