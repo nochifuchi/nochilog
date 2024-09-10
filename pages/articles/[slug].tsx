@@ -1,9 +1,11 @@
 import ArticleMeta from '@/components/ArticleMeta';
 import Layout from '@/components/Layout';
+import { siteConfig } from '@/site.config';
 import type { ArticleProps, Params } from '@/types/types';
 import { fetchBlocksByPageId, fetchPages } from '@/utils/notion';
 import { getText } from '@/utils/property';
 import type { GetStaticPaths, GetStaticProps, NextPage } from 'next';
+import Head from 'next/head';
 import { NotionBlocks } from 'notion-block-renderer';
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -41,8 +43,14 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
 };
 
 const Article: NextPage<ArticleProps> = ({ page, blocks }) => {
+  const title = `${getText(page.properties.name.title)} | ${siteConfig.title}`;
+
   return (
     <Layout>
+      <Head>
+        <title>{title}</title>
+        <meta property="og:title" content={title} />
+      </Head>
       <article className="mx-auto max-w-screen-md px-4 lg:px-0">
         {/* meta section */}
         <ArticleMeta page={page} />
