@@ -24,6 +24,7 @@ const Home: NextPage<IndexProps> = ({ pages }) => {
     <Layout>
       <Head>
         <title>{title}</title>
+        <meta property="og:title" content={title} />
       </Head>
       <div className="mx-auto max-w-screen-md px-4 pb-12 sm:pb-16 lg:px-0">
         <section className="grid w-full gap-y-6 sm:grid-cols-2 sm:gap-6">
