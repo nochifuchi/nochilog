@@ -1,43 +1,35 @@
 import type { ArticleMetaProps } from '@/types/types';
-import { getCover, getDate, getMultiSelect, getText } from '@/utils/property';
-import Image from 'next/image';
+import { getDate, getMultiSelect, getText } from '@/utils/property';
 import Link from 'next/link';
 import type { FC } from 'react';
 
 const ArticleMeta: FC<ArticleMetaProps> = ({ page }) => {
   return (
-    <>
-      {/* page cover */}
-      <Image
-        className="w-full max-w-screen-lg rounded-lg aspect-video my-4"
-        src={getCover(page.cover)}
-        alt=""
-        objectFit="cover"
-        width={640}
-        height={360}
-        quality={50}
-      />
-
-      {/* page name */}
-      <h1 className="my-8">{getText(page.properties.name.title)}</h1>
-      <div className="bg-gray-100 px-6 py-4 rounded text-sm text-gray-500">
-        <div className="grid grid-cols-3 gap-4">
-          {/* published */}
-          <div className="col-span-1">Published</div>
-          <div className="col-span-2">{getDate(page.properties.published.date)}</div>
-
-          {/* tags */}
-          <div className="col-span-1">Tags</div>
-          <div className="col-span-2">
-            {getMultiSelect(page.properties.tags.multi_select).map((tag, index) => (
-              <Link key={index} href={`/tags/${tag}`}>
-                <span className="text-gray-700 no-underline border-b border-solid border-gray-700 opacity-70 mr-3">{`#${tag}`}</span>
-              </Link>
-            ))}
-          </div>
-        </div>
+    <div className="rounded-md bg-primary-100 px-4 py-6">
+      <div className="flex h-12 items-center justify-center text-5xl leading-none">
+        {page.icon.emoji}
       </div>
-    </>
+      <h1 className="overflow-anywhere mt-3 text-center text-2xl font-bold sm:text-3xl">
+        {getText(page.properties.name.title)}
+      </h1>
+      <p className="mt-2 text-center text-xs text-gray-600 sm:text-sm">
+        {getDate(page.properties.published.date)}に公開
+      </p>
+      <div className="mt-4 flex justify-center">
+        <ul className="inline-flex gap-x-2">
+          {getMultiSelect(page.properties.tags.multi_select).map((tag, index) => (
+            <li key={index}>
+              <Link
+                href={`/tags/${tag}`}
+                className="transion rounded-full bg-primary-500 px-4 py-2 text-sm text-white hover:bg-primary-400 sm:text-base"
+              >
+                {tag}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
   );
 };
 

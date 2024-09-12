@@ -1,6 +1,5 @@
 import type { CardProps } from '@/types/types';
-import { getCover, getDate, getMultiSelect, getText } from '@/utils/property';
-import Image from 'next/image';
+import { getDate, getMultiSelect, getText } from '@/utils/property';
 import Link from 'next/link';
 import type { FC } from 'react';
 
@@ -8,39 +7,30 @@ const Card: FC<CardProps> = ({ page }) => {
   return (
     <Link
       href={`/articles/${getText(page.properties.slug.rich_text)}`}
-      className="flex justify-center"
+      className="grid gap-y-4 rounded-lg bg-base-light-gray p-5 shadow-lg transition hover:bg-base-gray"
     >
-      <div className="max-w-sm rounded overflow-hidden shadow-lg w-full my-4 md:my-0 content-between grid">
-        {/* image */}
-        <div>
-          <Image
-            className="w-full static h-auto"
-            src={getCover(page.cover)}
-            alt=""
-            objectFit="cover"
-            width={400}
-            height={225}
-            quality={30}
-          />
-        </div>
-
-        {/* title & date*/}
-        <div className="px-6 pt-4 ">
-          <h2 className="text-base font-medium mb-3 ">{getText(page.properties.name.title)}</h2>
-          <p className="text-gray-700 text-xs">{getDate(page.properties.published.date)}</p>
-        </div>
-
-        {/* tag */}
-        <div className="px-6 pb-4 ">
+      <div className="inline-flex h-14 items-center justify-center text-5xl leading-none">
+        {page.icon.emoji}
+      </div>
+      <div className="w-full">
+        <h2 className="overflow-anywhere line-clamp-2 text-base font-bold leading-6">
+          {getText(page.properties.name.title)}
+        </h2>
+      </div>
+      <div className="self-end">
+        <ul className="inline-flex gap-x-2">
           {getMultiSelect(page.properties.tags.multi_select).map((tag, index) => (
-            <span
+            <li
               key={index}
-              className="text-sm px-2 py-1 font-normal bg-gray-200 rounded-lg break-words mr-2 mb-2"
+              className="break-words rounded-lg bg-primary-500 px-2 py-1 text-sm font-normal text-white"
             >
-              {`#${tag}`}
-            </span>
+              {tag}
+            </li>
           ))}
-        </div>
+        </ul>
+        <p className="mt-3 text-right text-xs text-gray-700">
+          {getDate(page.properties.published.date)}
+        </p>
       </div>
     </Link>
   );

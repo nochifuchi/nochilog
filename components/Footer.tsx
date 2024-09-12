@@ -2,12 +2,10 @@ import { siteConfig } from '@/site.config';
 
 const Footer = () => {
   return (
-    <footer className="text-center bg-gray-900 text-white w-screen block">
-      <div className="container px-6 flex flex-col items-center max-w-2xl w-full mx-auto">
-        <div className="text-center p-4">
-          <small>&copy; {siteConfig.title}</small>
-        </div>
-      </div>
+    <footer className="bg-primary-200">
+      <p className="py-5 text-center">
+        <small>&copy; 2024 {siteConfig.title}</small>
+      </p>
     </footer>
   );
 };

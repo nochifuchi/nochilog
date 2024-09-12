@@ -76,4 +76,7 @@ export type PageType = {
   id: string;
   cover: FileType | null;
   properties: PropertyType;
+  icon: {
+    emoji: string;
+  };
 };
